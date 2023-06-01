@@ -1,6 +1,6 @@
 ---
 title: "Intervalos de confianza"
-author: "Ahtziri Guadarrama"
+author: "Marisol Mendoza"
 date: "2023-05-19"
 output:
   pdf_document: default
