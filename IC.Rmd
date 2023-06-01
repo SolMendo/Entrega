@@ -1,0 +1,1075 @@
+---
+title: "Intervalos de confianza"
+author: "Ahtziri Guadarrama"
+date: "2023-05-19"
+output:
+  pdf_document: default
+  header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage{multicol}
+  - \usepackage{titlesec}
+  - \usepackage{fancyhdr}
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Intervalos de confianza para una media
+
+## Para una media
+
+### Muestras grandes
+
+Para determinar una muestra grande n\>30. 1. Intervalo de confianza del 95 para la altura media poblacional de los estudiantes de una universidad con una muestra de 100 estudiantes
+
+El ejercicio arroja los siguientes datos
+
+```{r}
+tamaño <- 100
+media <- 170
+deviacionest <- 8
+nivelconf <- 95
+z <- 1.96
+```
+
+para desarrollar los ejercicios utilizamos las formulas y sustituimos los valores como se muestra a continuación
+
+xbarra+z*(desvest/sqrt/(n)), xbarra-z*(desvest/sqrt/(n))
+
+```{r}
+xbarra <- 170
+n <- 100
+desvest <- 8
+z <- 1.96
+
+mu1 <- xbarra-z*(desvest/sqrt(n))
+mu2 <- xbarra+z*(desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+2.  Intervalo de confianza del 90 % para la temperatura media poblacional de un horno con una muestra de 50 mediciones
+
+Igual que el ejercicio anterior el problema nos arroja los datos que vamos a sustituiur como
+
+```{r}
+n <- 50
+xbarra <- 400
+desvest <- 10
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","°C")
+print(intervalo)
+```
+
+3.  Intervalo de confianza del 95 para la media de las alturas de una población de 2000 estudiantes universitarios
+
+```{r}
+n <- 2000
+xbarra <- 170
+desvest <- 10
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+4.  Intervalo de confianza del 99 % para la media del diámetro de un conjunto de 50 tornillos:
+
+```{r}
+n <- 50
+xbarra <- 3.5
+desvest <- 0.2
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","mm")
+print(intervalo)
+```
+
+5.  Intervalo de confianza del 90 para la media del peso de una población de 50000 manzanas:
+
+```{r}
+n <- 50000
+xbarra <- 150
+desvest <- 20
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","g")
+print(intervalo)
+```
+
+6.  Intervalo de confianza del 95 para la media del tiempo de reacción de un grupo de 100 conductores:
+
+```{r}
+n <- 100
+xbarra <- 0.5
+desvest <- 0.1
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","s")
+print(intervalo)
+```
+
+7.Intervalo de confianza del 99 % para la media de las concentraciones de cloro en una muestra de agua:
+
+```{r}
+n <- 1
+xbarra <- 2 
+desvest <- 0.3
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ppm")
+print(intervalo)
+```
+
+8.Intervalo de confianza del 90 para la media de las velocidades de una muestra de 50 coches en una autopista:
+
+```{r}
+n <- 50
+xbarra <- 120 
+desvest <- 5
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","km/h")
+print(intervalo)
+```
+
+9.  Intervalo de confianza del 99 % para la media del diámetro de una muestra de 15 pernos:
+
+```{r}
+n <- 15
+xbarra <- 5.5 
+desvest <- 0.3
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","km/h")
+print(intervalo)
+```
+
+10. Intervalo de confianza del 95 % para la media de las concentraciones de ácido sulfúrico en una muestra de 25 soluciones:
+
+```{r}
+n <- 25
+xbarra <- 3.2
+desvest <- 0.4
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","M")
+print(intervalo)
+```
+
+11. Intervalo de confianza del 90 % para la media de las resistencias eléctricas en una muestra de 20 circuitos:
+
+```{r}
+n <- 20
+xbarra <- 150
+desvest <- 20
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ohms")
+print(intervalo)
+```
+
+12. Intervalo de confianza del 95 % para la media de las alturas de una muestra de 30 estudiantes de una universidad:
+
+```{r}
+n <- 30
+xbarra <- 170
+desvest <- 6 
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+13. Intervalo de confianza del 95 % para la media de las alturas de una población de 2000 estudiantes universitarios:
+
+```{r}
+n <- 2000
+xbarra <- 170
+desvest <- 10
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+14. Intervalo de confianza del 99 % para la media del diámetro de un conjunto de 50 tornillos:
+
+```{r}
+n <- 50
+xbarra <- 3.5 
+desvest <- 0.2
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ohms")
+print(intervalo)
+```
+
+15. Intervalo de confianza del 90 % para la media del peso de una población de 50000 manzanas:
+
+```{r}
+n <- 50000
+xbarra <- 150
+desvest <- 20
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","g")
+print(intervalo)
+```
+
+16. Intervalo de confianza del 95 % para la media del tiempo de reacción de un grupo de 100 conductores:
+
+```{r}
+n <- 100
+xbarra <- 150  
+desvest <- 0.1
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","s")
+print(intervalo)
+```
+
+17. Intervalo de confianza del 99 % para la media de las concentraciones de cloro en una muestra de agua:
+
+```{r}
+n <- 75
+xbarra <- 2.0 
+desvest <- 0.3
+z <- 
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ppm")
+print(intervalo)
+```
+
+18. Intervalo de confianza del 90 % para la media de las velocidades de una muestra de 50 coches en una autopista:
+
+```{r}
+n <- 50
+xbarra <- 120 
+desvest <- 5
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","km/h")
+print(intervalo)
+```
+
+19. Intervalo de confianza del 99 % para la media del diámetro de una muestra de 15 pernos:
+
+```{r}
+n <- 15
+xbarra <- 5.5
+desvest <- 0.3
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","mm")
+print(intervalo)
+```
+
+20. Intervalo de confianza del 95 % para la media de las concentraciones de ácido sulfúrico en una muestra de 25 soluciones:
+
+```{r}
+n <- 25
+xbarra <- 3.2  
+desvest <- 0.4
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","M")
+print(intervalo)
+```
+
+21. Intervalo de confianza del 90 % para la media de las resistencias eléctricas en una muestra de 20 circuitos:
+
+```{r}
+n <- 20
+xbarra <- 150 
+desvest <- 20
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ohms")
+print(intervalo)
+```
+
+22. Intervalo de confianza del 95 % para la media de las alturas de una muestra de 30 estudiantes de una universidad:
+
+```{r}
+n <- 30
+xbarra <-  
+desvest <- 6
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+**Ingeniería en sistemas electrónicos**
+
+1.  Un fabricante de resistencias electrónicas toma una muestra aleatoria de 100 resistencias de su línea de producción y encuentra que la media muestral de resistencia es de 500 ohms, con una desviación estándar muestral de 10 ohms. ¿Cuál es el intervalo de confianza del 95 % para la resistencia media poblacional?
+
+```{r}
+n <- 100
+xbarra <- 500 
+desvest <- 10
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ohms")
+print(intervalo)
+```
+
+2.  Un equipo de investigación quiere estimar la cantidad media de RAM en las computadoras portátiles producidas por una empresa. Toman una muestra aleatoria de 200 computadoras y encuentran que la media muestral de RAM es de 8 GB, con una desviación estándar muestral de 1 GB. ¿Cuál es el intervalo de confianza del 99 % para la cantidad media de RAM en las computadoras portátiles producidas por la empresa?
+
+```{r}
+n <- 200
+xbarra <- 8 
+desvest <- 1
+z <- 2.75
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","RAM")
+print(intervalo)
+```
+
+3.  En un estudio de calidad de señal en sistemas de comunicaciones, se mide la relación señal-ruido en 50 muestras de un dispositivo. Se obtiene una media muestral de 25 dB y una desviación estándar muestral de 2 dB. Construir un intervalo de confianza del 95 % para la verdadera relación señal-ruido media del dispositivo.
+
+```{r}
+n <- 50
+xbarra <- 25 
+desvest <- 2
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","dB")
+print(intervalo)
+```
+
+4.  Se desea evaluar el rendimiento de un nuevo algoritmo de compresión de datos en tiempo real. Se toman 100 mediciones del rendimiento y se obtiene una media muestral de 300 Mbps y una desviación estándar muestral de 20 Mbps. Construir un intervalo de confianza del 99 % para la verdadera tasa de compresión media.
+
+```{r}
+n <- 100
+xbarra <- 300 
+desvest <- 20
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","Mbps")
+print(intervalo)
+```
+
+5.  En un estudio de fiabilidad de componentes electrónicos, se mide el tiempo de vida de 80 muestras de un dispositivo. Se obtiene una media muestral de 5000 horas y una desviación estándar muestral de 800 horas. Construir un intervalo de confianza del 90 % para la verdadera vida media del dispositivo.
+
+```{r}
+n <- 80
+xbarra <- 5000 
+desvest <- 800
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","hrs")
+print(intervalo)
+```
+
+6.  Se desea evaluar el rendimiento de un sistema de detección de fallos en un sistema de control. Se toman 200 mediciones de tiempos de respuesta y se obtiene una media muestral de 10 ms y una desviación estándar muestral de 1.5 ms. Construir un intervalo de confianza del 95 % para la verdadera velocidad de respuesta media del sistema.
+
+```{r}
+n <- 200
+xbarra <- 10 
+desvest <- 1.5
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ms")
+print(intervalo)
+```
+
+7.  En un estudio de calidad de señal en sistemas de radar, se mide la relación señal-ruido en 150 muestras de un dispositivo. Se obtiene una media muestral de 30 dB y una desviación estándar muestral de 3 dB. Construir un intervalo de confianza del 98 % para la verdadera relación señal-ruido media del dispositivo.
+
+```{r}
+n <- 150
+xbarra <- 30 
+desvest <- 3
+z <- 2.32
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","dB")
+print(intervalo)
+```
+
+**Ingenieria en software**
+
+1.  Se desea evaluar el rendimiento de un algoritmo de búsqueda en una base de datos. Se toman 500 mediciones del tiempo de búsqueda y se obtiene una media muestral de 3.5 segundos y una desviación estándar muestral de 0.5 segundos. Construir un intervalo de confianza del 95 % para la verdadera velocidad de búsqueda media.
+
+```{r}
+n <- 500
+xbarra <- 3.5 
+desvest <- 0.5
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","s")
+print(intervalo)
+```
+
+2.  En un estudio de usabilidad de una aplicación móvil, se mide el tiempo que tardan los usuarios en realizar una tarea específica en la aplicación. Se toman 200 mediciones y se obtiene una media muestral de 45 segundos y una desviación estándar muestral de 10 segundos. Construir un intervalo de confianza del 99 % para la verdadera duración media de la tarea.
+
+```{r}
+n <- 200
+xbarra <- 45
+desvest <- 10
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","s")
+print(intervalo)
+```
+
+3.  Se desea evaluar la eficacia de un nuevo algoritmo de clasificación de datos. Se toman 1000 mediciones de la precisión de clasificación y se obtiene una media muestral del 85 % y una desviación estándar muestral del 5 %. Construir un intervalo de confianza del 90 % para la verdadera precisión media de clasificación.
+
+```{r}
+n <- 1000
+xbarra <- 85 
+desvest <- 5
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","%")
+print(intervalo)
+```
+
+4.  En un estudio de rendimiento de un sistema de procesamiento de imágenes, se mide la velocidad de procesamiento en milisegundos. Se toman 300 mediciones y se obtiene una media muestral de 25 ms y una desviación estándar muestral de 3 ms. Construir un intervalo de confianza del 99 % para la verdadera velocidad media de procesamiento.
+
+```{r}
+n <- 300
+xbarra <- 25 
+desvest <- 3
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ms")
+print(intervalo)
+```
+
+5.  Se desea evaluar la eficacia de un sistema de recomendación de productos en línea. Se toman 500 mediciones de la satisfacción de los usuarios y se obtiene una media muestral de 4.2 estrellas y una desviación estándar muestral de 0.5 estrellas. Construir un intervalo de confianza del 95 % para la verdadera satisfacción media de los usuarios.
+
+```{r}
+n <- 500
+xbarra <- 4.2
+desvest <- 0.5
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","estrellas")
+print(intervalo)
+```
+
+**Ingenieria en sistemas energéticos**
+
+1.  Se desea evaluar la eficacia de un sistema de energía solar para generar electricidad en una región específica. Se toman 1000 mediciones de la producción de energía diaria y se obtiene una media muestral de 10 kWh y una desviación estándar muestral de 2 kWh. Construir un intervalo de confianza del 95 % para la verdadera producción media de energía diaria.
+
+```{r}
+n <- 1000
+xbarra <- 10 
+desvest <- 2
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","kWh")
+print(intervalo)
+```
+
+2.  En un estudio de la eficacia de un nuevo sistema de enfriamiento para una central eléctrica, se mide la temperatura de salida del aire. Se toman 500 mediciones y se obtiene una media muestral de 20 grados Celsius y una desviación estándar muestral de 3 grados Celsius. Construir un intervalo de confianza del 99 % para la verdadera temperatura media de salida del aire.
+
+```{r}
+n <- 500
+xbarra <- 20
+desvest <- 3
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","℃")
+print(intervalo)
+```
+
+3.  Se desea evaluar la eficacia de un nuevo sistema de control de la temperatura en una planta de producción de energía. Se toman 300 mediciones de la temperatura y se obtiene una media muestral de 50 grados Celsius y una desviación estándar muestral de 5 grados Celsius. Construir un intervalo de confianza del 90 % para la verdadera temperatura media.
+
+```{r}
+n <- 300
+xbarra <- 50
+desvest <- 5
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","℃")
+print(intervalo)
+```
+
+4.  En un estudio de la eficacia de un nuevo sistema de almacenamiento de energía, se mide la cantidad de energía almacenada en kWh. Se toman 200 mediciones y se obtiene una media muestral de 100 kWh y una desviación estándar muestral de 10 kWh. Construir un intervalo de confianza del 99 % para la verdadera cantidad media de energía almacenada.
+
+```{r}
+n <- 200
+xbarra <- 100
+desvest <- 10
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","kWh")
+print(intervalo)
+```
+
+5.  Se desea evaluar la eficacia de un nuevo sistema de generación de energía hidroeléctrica en una represa. Se toman 400 mediciones de la producción de energía y se obtiene una media muestral de 50 MW y una desviación estándar muestral de 6 MW. Construir un intervalo de confianza del 95 % para la verdadera producción media de energía.
+
+```{r}
+n <- 400
+xbarra <- 50
+desvest <- 6
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","MW")
+print(intervalo)
+```
+
+**Protección civil**
+
+Se desea estimar el tiempo medio que tarda una brigada de Protección Civil en llegar al lugar de una emergencia. Se selecciona una muestra aleatoria de 100 emergencias y se obtiene un tiempo medio de 15 minutos con una desviación estándar de 3 minutos. Se desea construir un intervalo de confianza del 95 % para la media del tiempo de llegada de las brigadas.
+
+```{r}
+n <- 100
+xbarra <- 15
+desvest <- 3
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","min")
+print(intervalo)
+```
+
+2.  Se quiere determinar la concentración media de un contaminante en el aire en una zona de Protección Civil. Se toma una muestra aleatoria de 50 mediciones y se obtiene una concentración media de 0.5 ppm con una desviación estándar de 0.1 ppm. Se desea construir un intervalo de confianza del 90 % para la media de la concentración de contaminante en el aire.
+
+```{r}
+n <- 50
+xbarra <- 0.5
+desvest <- 0.1
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ppm")
+print(intervalo)
+```
+
+3.  Se desea determinar la media de la cantidad de material de rescate utilizado en las operaciones de Protección Civil. Se toma una muestra aleatoria de 200 operaciones y se obtiene una media de 500 kg con una desviación estándar de 50 kg. Se desea construir un intervalo de confianza del 99 % para la media de la cantidad de material de rescate utilizado en las operaciones.
+
+```{r}
+n <- 200
+xbarra <- 500
+desvest <- 50
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","kg")
+print(intervalo)
+```
+
+4.  Se desea estimar la media del tiempo que tarda en ser restablecido el servicio eléctrico en una zona afectada por un desastre natural. Se selecciona una muestra aleatoria de 150 casos y se obtiene un tiempo medio de restablecimiento de 6 horas con una desviación estándar de 1.5 horas. Se desea construir un intervalo de confianza del 95 % para la media del tiempo de restablecimiento del servicio eléctrico.
+
+```{r}
+n <- 150
+xbarra <- 6
+desvest <- 1.5
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","horas")
+print(intervalo)
+```
+
+5.  Se quiere estimar la media del número de llamadas de emergencia recibidas en un centro de atención de Protección Civil durante los fines de semana. Se toma una muestra aleatoria de 300 fines de semana y se obtiene un número medio de llamadas de 200 con una desviación estándar de 30. Se desea construir un intervalo de confianza del 98 % para la media del número de llamadas de emergencia recibidas durante los fines de semana.
+
+```{r}
+n <- 300
+xbarra <- 200
+desvest <- 30
+z <- 2.32
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","llamadas")
+print(intervalo)
+```
+
+**Ingeniería**
+
+1.  Un fabricante de circuitos electrónicos afirma que la vida útil media de una batería de su producción es de al menos 500 horas. Si se toma una muestra aleatoria de 100 baterías y se encuentra una vida útil media de 510 horas con una desviación estándar de 20 horas, ¿qué se puede concluir con un nivel de confianza del 95 %?
+
+```{r}
+n <- 100
+xbarra <- 510
+desvest <- 20
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","hrs")
+print(intervalo)
+```
+
+2.  Un ingeniero quiere estimar la resistencia promedio de una muestra de 60 vigas de acero. Los datos indican una media de 20,5 kN/m2 y una desviación estándar de 1,8 kN/m2. Si se desea tener un nivel de confianza del 99 %, ¿cuál es el intervalo de confianza para la resistencia media de las vigas?
+
+```{r}
+n <- 60
+xbarra <- 20.5
+desvest <- 1.8
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","kN/m2")
+print(intervalo)
+```
+
+3.  Se está llevando a cabo una investigación sobre la cantidad de agua que un motor de combustión interna puede absorber antes de que falle. Se toma una muestra de 80 motores y se encuentra una media de absorción de 80 ml con una desviación estándar de 10 ml. Si se desea estimar la cantidad media de absorción con un nivel de confianza del 90 %, ¿cuál es el intervalo de confianza?
+
+```{r}
+n <- 80
+xbarra <- 80
+desvest <- 10
+z <- 1.64
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","ml")
+print(intervalo)
+```
+
+4.  Un fabricante de turbinas de viento desea probar su nueva turbina en condiciones extremas de viento. Para ello, se mide la potencia generada por la turbina en una muestra de 50 pruebas. La media de la potencia generada es de 1200 kW con una desviación estándar de 100 kW. ¿Cuál es el intervalo de confianza del 95 % para la potencia media de la turbina?
+
+```{r}
+n <- 50
+xbarra <- 1200
+desvest <- 100
+z <- 1.96
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","kW")
+print(intervalo)
+```
+
+5.  Se está llevando a cabo una investigación para determinar la vida útil media de un nuevo material utilizado en la construcción de edificios. Se toma una muestra de 200 piezas del material y se encuentra que la vida útil media es de 20 años con una desviación estándar de 2 años. Si se desea tener un nivel de confianza del 99 %, ¿cuál es el intervalo de confianza para la vida útil media del material?
+
+```{r}
+n <- 200
+xbarra <- 20
+desvest <- 2
+z <- 2.57
+
+mu1<-xbarra-z*(desvest/sqrt(n))
+
+mu2<-(xbarra+z*desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","años")
+print(intervalo)
+```
+
+### Muestras pequeñas
+
+Para determinar una muestra pequeña tenemis n\<30
+
+La fórmula general para calcular el intervalo de confianza de una media, cuando la muestra es pequeña, es: xbarra + t*(s/sqrt(n)) y xbarra - t*(s/sqrt(n))
+
+1.  Intervalo de confianza del 95 % para la altura media poblacional de los estudiantes de una universidad con una muestra de 10 estudiantes: Entonces podemos asignar valores a los parametros y encontrar el intervalo.
+
+```{R}
+n <- 10
+gl <- n-1
+xbarra <- 170
+desvest <- 8
+nc <- 0.975 #valores directos
+
+Talpha2 <- round(qt(nc, gl),4)
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+```{R}
+n<- 10
+gl<- n-1
+xbarra<- 170
+desvest<- 8
+nc<-0.95
+
+Talpha2 <- round(qt(nc, gl),4)
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+```{R}
+n <- 10
+gl <- n-1
+xbarra <- 170 
+desvest <- 8
+
+mu1<-xbarra-gl*(desvest/sqrt(n))
+
+mu2<-xbarra+gl*(desvest/sqrt(n))
+
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+2.  Intervalo de confianza del 90 % para el peso medio poblacional de los recién nacidos con una muestra de 15 bebés
+
+```{r}
+n <- 15
+gl <- n-1
+xbarra <- 3.5
+desvest <- 0.5
+nc <- 0.95
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","kg")
+print(intervalo)
+```
+
+3.  Intervalo de confianza del 99 para la duración media de las baterías de un dispositivo electrónico con una muestra de \$84 dispositivos:
+
+```{r}
+n <- 84
+gl <- n-1
+xbarra <- 30
+desvest <- 5
+nc <- 0.995
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","horas")
+print(intervalo)
+```
+
+4.  Intervalo de confianza del 95 % para el número medio de días de hospitalización de pacientes con una muestra de 12 pacientes: Tamaño de la muestra (n): 12 Media muestral (x): 5 días Desviación estándar muestral (s): 2 días
+
+```{r}
+n <- 12
+gl <- n-1
+xbarra <- 5 
+desvest <- 2
+nc <- 0.975
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","dias")
+print(intervalo)
+```
+
+5.  Intervalo de confianza del 99 % para la media poblacional de la concentración de un compuesto en una muestra de agua con una muestra de 7 mediciones: Tamaño de la muestra (n): 7 Media muestral (x): 4 mg/L Desviación estándar muestral (s): 1 mg/L
+
+```{r}
+n <-  7
+gl <- n-1
+xbarra <- 4 
+desvest <- 1
+nc <- 0.995
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","mg/L")
+print(intervalo)
+```
+
+6.  Intervalo de confianza del 95 % para la altura media de una muestra de 8 plantas: Tamaño de la muestra (n): 8 Media muestral (x): 12 cm Desviación estándar muestral (s): 2 cm Nivel de confianza: 95 %
+
+```{r}
+n <- 8
+gl <- n-1
+xbarra <- 12
+desvest <- 2
+nc <- 0.975
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","cm")
+print(intervalo)
+```
+
+7.  Intervalo de confianza del 90 % para el tiempo medio de reacción de un grupo de 6 sujetos: Tamaño de la muestra (n): 6 Media muestral (x): 0.3 segundos Desviación estándar muestral (s): 0.05 segundos
+
+```{r}
+n <- 6
+gl <- n-1
+xbarra <- 0.3
+desvest <- 0.05
+nc <- 0.95
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","seg")
+print(intervalo)
+```
+
+8.  Intervalo de confianza del 99 % para la resistencia media de un lote de 10 piezas de acero: Tamaño de la muestra (n): 10 Media muestral (x): 750 MPa Desviación estándar muestral (s): 25 MPa
+
+```{r}
+n <- 10
+gl <- n-1
+xbarra <- 750
+desvest <- 25
+nc <- 0.995
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","MPa")
+print(intervalo)
+```
+
+9.  Intervalo de confianza del 95 % para la concentración media de un compuesto en una muestra de 12 aguas subterráneas: Tamaño de la muestra (n): 12 Media muestral (x): 5 mg/L Desviación estándar muestral (s): 1.5 mg/L
+
+```{r}
+n <- 12
+gl <- n-1
+xbarra <- 5
+desvest <- 1.5
+nc <- 0.975
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","mg/L")
+print(intervalo)
+```
+
+10. Intervalo de confianza del 95 % para la eficiencia media de una muestra de 20 paneles solares: Tamaño de la muestra (n): 20 Media muestral (x): 80 % Desviación estándar muestral (s): 4 %
+
+```{r}
+n <- 20
+gl <- n-1
+xbarra <- 80
+desvest <- 4
+nc <- 0.975
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","%")
+print(intervalo)
+```
+
+11. Intervalo de confianza del 90 % para la concentración media de un compuesto en una muestra de 15 suelos: Tamaño de la muestra (n): 15 Media muestral (x): 0.3 mg/g Desviación estándar muestral (s): 0.05 mg/g Nivel de confianza: 90 %
+
+```{r}
+n <- 15
+gl <- n-1
+xbarra <- 0.3
+desvest <- 0.05
+nc <- 0.95
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","mg/g")
+print(intervalo)
+```
+
+12. Intervalo de confianza al % para la concentración media de un producto químico en una muestra de 25 aguas subterráneas: Tamaño de la muestra (n): 25 Media muestral (x): 10.2 mg/L Desviación estándar muestral (s): 2.3 mg/L
+
+```{r}
+n <- 25 
+gl <- n-1
+xbarra <- 10.2 
+desvest <- 2.3
+nc <- 
+
+Talpha2 <- round(qt(nc, gl),4)
+
+mu1 <- xbarra - Talpha2*(desvest/sqrt(n))
+mu2 <- xbarra + Talpha2*(desvest/sqrt(n))
+intervalo<-paste0("mu ∈ ","(",round(mu1,2),",",round(mu2,2),")","mg/L")
+print(intervalo)
+```
+
+## Diferencia de dos medias
+
+### Varianzas desconocidas y distintas
+
+1.  
